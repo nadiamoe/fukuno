@@ -141,7 +141,7 @@
 
     - name: Upload kubelet config to the cluster
       ansible.builtin.shell:
-        cmd: kubeadm --config /etc/kubernetes/kubeadm.yaml init phase upload-config kubelet
+        cmd: kubeadm --config /etc/kubernetes/kubeadm.yaml init phase upload-config all
       when: admin_conf.stat.exists
 
     - meta: end_host
