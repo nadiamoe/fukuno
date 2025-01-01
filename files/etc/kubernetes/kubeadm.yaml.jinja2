@@ -8,7 +8,7 @@ shutdownGracePeriod: 120s
 shutdownGracePeriodCriticalPods: 20s
 {% if "control_plane" in group_names %}
 ---
-apiVersion: kubeadm.k8s.io/v1beta3
+apiVersion: kubeadm.k8s.io/v1beta4
 kind: ClusterConfiguration
 clusterName: Curry
 controlPlaneEndpoint: {{ apiserver_host }}:6443
@@ -24,7 +24,7 @@ etcd:
     keyFile: /etc/kubernetes/pki/apiserver-etcd-client.key
     caFile: /etc/kubernetes/pki/etcd/ca.crt
 ---
-apiVersion: kubeadm.k8s.io/v1beta3
+apiVersion: kubeadm.k8s.io/v1beta4
 kind: InitConfiguration
 nodeRegistration:
   ignorePreflightErrors:
