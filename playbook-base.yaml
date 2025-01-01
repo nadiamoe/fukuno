@@ -16,21 +16,29 @@
         state: present
         update_cache: true
         name: [
-          # Container runtime
-          cri-o, crictl, crun,
-          # Kubelet & kubectl
-          kubelet, kubectl,
-          # Kubeadm is needed in worker nodes as it provides /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
-          kubeadm,
-          # Kernel and headers.
-          linux-lts, linux-lts-headers,
-          # NFS
-          nfs-utils,
-          # Networking
-          openresolv, # Required for iwd.
-          # Misc node administration tools.
-          btop, htop, lsof, nano, pacman-contrib,
-        ]
+            # Container runtime
+            cri-o,
+            crictl,
+            crun,
+            # Kubelet & kubectl
+            kubelet,
+            kubectl,
+            # Kubeadm is needed in worker nodes as it provides /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+            kubeadm,
+            # Kernel and headers.
+            linux-lts,
+            linux-lts-headers,
+            # NFS
+            nfs-utils,
+            # Networking
+            openresolv, # Required for iwd.
+            # Misc node administration tools.
+            btop,
+            htop,
+            lsof,
+            nano,
+            pacman-contrib,
+          ]
 
     - name: Clean up container caches
       ansible.builtin.shell:
@@ -80,7 +88,7 @@
         name: crio
         state: started
         enabled: yes
-    - name: Kubelet is enabled  # Storage nodes override kubelet.service's WantedBy.
+    - name: Kubelet is enabled # Storage nodes override kubelet.service's WantedBy.
       ansible.builtin.systemd:
         name: kubelet
         enabled: yes
@@ -100,7 +108,7 @@
         dest: /
     - name: CP-specific packages are installed
       community.general.pacman:
-        name: [ k9s ]
+        name: [k9s]
         state: present
 
 - name: Control plane is set up
@@ -224,4 +232,4 @@
       ansible.builtin.systemd:
         name: nfs-server
         state: restarted
-        enabled: yes  # NFS unit has an overridden WantedBy on Terabox.
+        enabled: yes # NFS unit has an overridden WantedBy on Terabox.
