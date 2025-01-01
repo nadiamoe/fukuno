@@ -2,7 +2,7 @@
   hosts: control_plane
   remote_user: root
 
-  strategy: linear  # Required for ansible.builtin.pause
+  strategy: linear # Required for ansible.builtin.pause
   serial: 1
 
   tasks:
@@ -42,7 +42,7 @@
     - ansible.builtin.set_fact:
         new_version: "{{ kubeadm_version.stdout_lines[0] | trim }}"
       when: |
-         new_version is not defined
+        new_version is not defined
 
     - name: Plan upgrade
       register: plan
