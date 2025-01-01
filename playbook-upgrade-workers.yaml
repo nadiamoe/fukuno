@@ -18,3 +18,13 @@
       community.general.pacman:
         upgrade: true
         update_cache: true
+    - name: Print upgraded packages
+      when: |
+        'packages' in upgraded
+      ansible.builtin.debug:
+        var: upgraded.packages
+    - name: Reboot node
+      register: reboot
+      when: |
+        ('packages' in upgraded) and (upgraded.packages | intersect(['kubelet', 'cri-o', 'linux', 'linux-lts']) | length > 0)
+      ansible.builtin.reboot:
