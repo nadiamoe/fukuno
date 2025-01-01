@@ -35,4 +35,11 @@ nodeRegistration:
 skipPhases:
   # Cilium replaces kube-proxy.
   - addon/kube-proxy
+---
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: UpgradeConfiguration
+node:
+  skipPhases:
+    # Cilium replaces kube-proxy.
+    - addon/kube-proxy
 {% endif %}
