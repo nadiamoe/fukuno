@@ -71,4 +71,5 @@
   tasks:
     - name: Upgrade node
       ansible.builtin.shell:
-        cmd: kubeadm upgrade node
+        # TODO: remove `--skip-phases` when I figure out https://github.com/kubernetes/kubeadm/issues/3142.
+        cmd: kubeadm --config /etc/kubernetes/kubeadm.yaml upgrade node --skip-phases addon/kube-proxy
