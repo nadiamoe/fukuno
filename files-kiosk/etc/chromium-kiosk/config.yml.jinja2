@@ -2,7 +2,7 @@ FULL_SCREEN: true # Run in full screen mode, browser will use whole screen witho
 TOUCHSCREEN: true # Enables support for touchscreen
 HOME_PAGE: >-
   {% if ansible_host == "grafanista" %}
-  https://ro.grafana.net/playlists/play/c7737b42-d9dc-400f-a1da-dad40d9c2f3b?kiosk
+  https://nm.grafana.net/d/c673b19b-df93-48d4-8646-04377589dbeb/kubernetes?kiosk=1
   {% elif ansible_host == "grocypanel" %}
   https://grocy.roob.re
   {% elif "hasspa" in ansible_host %}
