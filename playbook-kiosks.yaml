@@ -87,7 +87,7 @@
           # Required for iwd.
           openresolv,
           # Misc node administration tools.
-          btop, htop, lsof, nano,
+          btop, htop, lsof, nano, pacman-contrib
           # zram
           zram-generator,
         ]
@@ -101,6 +101,9 @@
       register: upgraded
       community.general.pacman:
         upgrade: true
+
+    - name: Clean package cache
+      ansible.builtin.shell: paccache -rk3
 
     - name: Print upgraded packages
       when: |
