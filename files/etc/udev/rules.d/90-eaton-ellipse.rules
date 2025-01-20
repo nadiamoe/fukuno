@@ -1,1 +1,1 @@
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", SYMLINK+="eaton-ellipse"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="G355P05187", SYMLINK+="eaton-G355P05187"
