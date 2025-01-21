@@ -1,1 +1,2 @@
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="G355P05187", SYMLINK+="eaton-G355P05187"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="P355K10BCY", SYMLINK+="eaton-P355K10BCY"
