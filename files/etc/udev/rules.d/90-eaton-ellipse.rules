@@ -1,2 +1,6 @@
-SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="G355P05187", SYMLINK+="eaton-G355P05187"
+# Server room (1600VA)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="G365F20024", SYMLINK+="eaton-G365F20024"
+# TV
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="P355K10BCY", SYMLINK+="eaton-P355K10BCY"
+# Former server room (650VA)
+#SUBSYSTEM=="usb", ATTRS{idVendor}=="0463", ATTRS{idProduct}=="ffff", ATTRS{serial}=="G355P05187", SYMLINK+="eaton-G355P05187"
