@@ -1,8 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    ":semanticCommitsDisabled",
-    ":dependencyDashboard"
+    "github>nadiamoe/renovate-config",
   ],
   "kubernetes": {
     "fileMatch": [
