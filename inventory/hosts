@@ -21,4 +21,4 @@ moniserver ansible_host=10.0.0.35
 [kiosks]
 grafanista
 hasspa1 movistar_home=true
-grocypanel movistar_home=true
+#grocypanel movistar_home=true
