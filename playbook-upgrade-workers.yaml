@@ -9,10 +9,6 @@
   serial: 1
 
   tasks:
-    - name: Sync node configuration
-      ansible.builtin.shell:
-        cmd: kubeadm upgrade node
-
     - name: Upgrade system
       register: upgraded
       community.general.pacman:
@@ -23,6 +19,9 @@
         'packages' in upgraded
       ansible.builtin.debug:
         var: upgraded.packages
+    - name: Sync node configuration
+      ansible.builtin.shell:
+        cmd: kubeadm upgrade node
     - name: Reboot node
       register: reboot
       when: |
