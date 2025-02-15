@@ -64,12 +64,3 @@
     - name: Echo apply log
       ansible.builtin.debug:
         var: apply.stdout_lines
-
-- name: Kubeadm upgrade nodes
-  hosts: control_plane:workers
-  remote_user: root
-  tasks:
-    - name: Upgrade node
-      ansible.builtin.shell:
-        # TODO: remove `--skip-phases` when I figure out https://github.com/kubernetes/kubeadm/issues/3142.
-        cmd: kubeadm --config /etc/kubernetes/kubeadm.yaml upgrade node --skip-phases addon/kube-proxy
