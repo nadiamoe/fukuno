@@ -87,7 +87,7 @@
           # Required for iwd.
           openresolv,
           # Misc node administration tools.
-          btop, htop, lsof, nano, pacman-contrib
+          btop, htop, lsof, nano, pacman-contrib,
           # zram
           zram-generator,
         ]
