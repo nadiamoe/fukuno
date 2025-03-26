@@ -13,9 +13,9 @@ fukuno-66 ansible_host=10.0.0.30
 terabox ansible_host=10.0.0.10
 
 [workers]
-terabox   ansible_host=10.0.0.10
-fukuno-37 ansible_host=10.0.0.31
-fukuno-f6 ansible_host=10.0.0.32 # fukuno-f6 has both 10.0.0.32 (wireless) and dhcp (wired)
+terabox    ansible_host=10.0.0.10
+fukuno-37  ansible_host=10.0.0.31
+fukuno-f6  ansible_host=10.0.0.32 # fukuno-f6 has both 10.0.0.32 (wireless) and dhcp (wired)
 moniserver ansible_host=10.0.0.35
 
 [kiosks]
