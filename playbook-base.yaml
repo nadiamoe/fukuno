@@ -38,6 +38,7 @@
             lsof,
             nano,
             pacman-contrib,
+            lm_sensors,
           ]
 
     - name: Clean up container caches
