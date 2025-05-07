@@ -1,11 +1,11 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>nadiamoe/renovate-config",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'github>nadiamoe/renovate-config',
   ],
-  "kubernetes": {
-    "fileMatch": [
-      "\\.ya?ml$"
-    ]
-  }
+  kubernetes: {
+    managerFilePatterns: [
+      '/\\.ya?ml$/',
+    ],
+  },
 }
