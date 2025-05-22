@@ -7,7 +7,7 @@
       ansible.builtin.copy:
         dest: /tmp/kubeadm-etcd-certs.yaml
         content: |
-          apiVersion: kubeadm.k8s.io/v1beta3
+          apiVersion: kubeadm.k8s.io/v1beta4
           kind: ClusterConfiguration
           etcd:
             local:
