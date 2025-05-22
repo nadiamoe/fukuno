@@ -207,7 +207,7 @@
               apiServerEndpoint: "{{ apiserver_host }}:6443"
               token: "{{ kubeadm_token.stdout }}"
               caCertHashes:
-                - sha256: "{{ kube_ca_hash.stdout }}"
+                - "sha256:{{ kube_ca_hash.stdout }}"
           EOF
     - name: Join node
       ansible.builtin.command:
