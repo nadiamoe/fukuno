@@ -14,9 +14,8 @@ clusterName: Curry
 controlPlaneEndpoint: {{ apiserver_host }}:6443
 networking:
   dnsDomain: cluster.local
-  # For 128-bit addresses, the mask must be >= 108
-  podSubnet: 10.185.0.0/16,fd00:0:0:c85:2::/108
-  serviceSubnet: 10.96.0.0/12,fd00:0:0:c85:1::/108
+  podSubnet: 10.185.0.0/16
+  serviceSubnet: 10.96.0.0/12
 etcd:
   external:
     endpoints:
