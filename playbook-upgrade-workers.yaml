@@ -21,7 +21,7 @@
         var: upgraded.packages
     - name: Sync node configuration
       ansible.builtin.shell:
-        cmd: kubeadm upgrade node
+        cmd: kubeadm upgrade node phase kubelet-config
     - meta: end_host
       when: |
         ('packages' not in upgraded) or (upgraded.packages | intersect(['kubelet', 'cri-o', 'runc', 'crun', 'linux', 'linux-lts']) | length == 0)
