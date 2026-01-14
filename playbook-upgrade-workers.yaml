@@ -29,7 +29,7 @@
     - name: Drain node before reboot
       delegate_to: "{{ groups['control_plane'][0] }}"
       ansible.builtin.command:
-        cmd: kubectl drain --delete-emptydir-data --ignore-daemonsets {{ ansible_hostname }}
+        cmd: kubectl drain --delete-emptydir-data --ignore-daemonsets {{ ansible_facts["hostname"] }}
     - name: Reboot node
       register: reboot
       ansible.builtin.reboot:
