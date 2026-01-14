@@ -6,6 +6,8 @@ resolvConf: /etc/resolv-k8s.conf
 shutdownGracePeriod: 120s
 # Of the duration above, the following duration will be reserved for terminating critical pods after non-critical ones.
 shutdownGracePeriodCriticalPods: 20s
+# Use CRI-O, even if containerd socket is present
+containerRuntimeEndpoint: /var/run/crio/crio.sock
 {% if "control_plane" in group_names %}
 ---
 apiVersion: kubeadm.k8s.io/v1beta4
