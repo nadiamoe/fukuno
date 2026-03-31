@@ -1,1 +1,2 @@
 SUBSYSTEM=="tty", ATTRS{product}=="Sonoff Zigbee 3.0 USB Dongle Plus", SYMLINK+="sonoff-zigbee"
+SUBSYSTEM=="tty", ATTRS{product}=="Sonoff Zigbee 3.0 USB Dongle Plus V2", SYMLINK+="sonoff-zbdongle-e"
