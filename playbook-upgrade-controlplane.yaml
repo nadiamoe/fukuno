@@ -50,7 +50,9 @@
     - name: Plan upgrade
       register: plan
       ansible.builtin.shell:
-        cmd: kubeadm upgrade plan "{{ new_version }}" -o json
+        # Ignore CoreDNSUnsupportedPlugins. ACL plugin is used to filter out AAAA records, which the cluster does not
+        # support.
+        cmd: kubeadm upgrade plan "{{ new_version }}" --ignore-preflight-errors=CoreDNSUnsupportedPlugins -o json
     - meta: end_host
       when: plan.stdout_lines | length <= 1
     - name: Confirm upgrade
