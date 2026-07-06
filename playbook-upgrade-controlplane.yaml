@@ -16,10 +16,13 @@
         'packages' in upgraded
       ansible.builtin.debug:
         var: upgraded.packages
-    - name: Reboot node
-      register: reboot
-      when: |
+    - name: Drain node before reboot
+      when: &reboot-needed |
         ('packages' in upgraded) and (upgraded.packages | intersect(['kubelet', 'cri-o', 'linux', 'linux-lts']) | length > 0)
+      ansible.builtin.command:
+        cmd: kubectl drain --delete-emptydir-data --ignore-daemonsets {{ ansible_facts["hostname"] }}
+    - name: Reboot node
+      when: *reboot-needed
       ansible.builtin.reboot:
 
     - name: Ensure control plane is up
@@ -29,10 +32,15 @@
       until: getnodes is not failed
       retries: 6
       delay: 10
+
     - name: Wait for cluster to settle after CP reboot
-      when: reboot is not skipped
+      when: *reboot-needed
       ansible.builtin.wait_for:
         timeout: 60
+    - name: Uncordon node after reboot
+      when: *reboot-needed
+      ansible.builtin.command:
+        cmd: kubectl uncordon {{ ansible_facts["hostname"] }}
 
     - name: Extract kubeadm version
       register: kubeadm_version
