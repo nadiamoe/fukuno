@@ -1,6 +1,5 @@
 - name: Upgrade worker nodes
-  # Do not upgrade terabox automatically
-  hosts: workers:!storage
+  hosts: workers
   remote_user: root
 
   # Upgrade hosts one by one
@@ -9,11 +8,18 @@
   serial: 1
 
   tasks:
+    - name: Retrieve zfs dependencies
+      register: zfsdeps
+      ansible.builtin.shell:
+        cmd: zfsdeps
+      when: "'storage' in group_names"
     - name: Upgrade system
       register: upgraded
       community.general.pacman:
         upgrade: true
         update_cache: true
+        upgrade_extra_args: |-
+          {{ zfsdeps.stdout | default('') }}
     - name: Print upgraded packages
       when: |
         'packages' in upgraded
@@ -29,11 +35,11 @@
     - name: Drain node before reboot
       delegate_to: "{{ groups['control_plane'][0] }}"
       ansible.builtin.command:
-        cmd: kubectl drain --delete-emptydir-data --ignore-daemonsets {{ ansible_facts["hostname"] }}
+        cmd: kubectl drain --delete-emptydir-data --ignore-daemonsets {{ inventory_hostname }}
     - name: Reboot node
       register: reboot
       ansible.builtin.reboot:
     - name: Uncordon node after reboot
       delegate_to: "{{ groups['control_plane'][0] }}"
       ansible.builtin.command:
-        cmd: kubectl uncordon {{ ansible_facts["hostname"] }}
+        cmd: kubectl uncordon {{ inventory_hostname }}
