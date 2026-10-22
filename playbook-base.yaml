@@ -39,6 +39,8 @@
             nano,
             pacman-contrib,
             lm_sensors,
+            # Ships revocations
+            ca-certificates-mozilla,
           ]
 
     - name: Clean up container caches
