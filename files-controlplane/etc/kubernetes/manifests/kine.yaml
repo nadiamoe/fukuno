@@ -45,7 +45,7 @@ spec:
             - -c
             - pg_isready --username=$POSTGRES_USER --dbname=$POSTGRES_DB --timeout=1
     - name: kine-kine
-      image: ghcr.io/k3s-io/kine:v0.17.4@sha256:7d01c565fd61204f516c3f92c0069fb00dfa3081e5cb9c2afb1a8a80dee59a34
+      image: ghcr.io/k3s-io/kine:v0.17.5@sha256:3143a2af7d4b100ae6c01bc26da4d8502cda272a6e017b086fae2daedc94e215
       imagePullPolicy: IfNotPresent
       securityContext:
         # kine runs as nobody by default, but on this configuration it needs to read certs from /etc/kubernetes/pki,
